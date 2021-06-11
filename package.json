@@ -1,11 +1,14 @@
 {
-  "name": "advanced-linking-bot",
+  "name": "discord-scripting-bot",
   "version": "1.0.0",
-  "description": "A bot made too stop bot spam and further functions on discord",
+  "description": "A bot made too help discord admins too code custom responces for events",
   "main": "src/index.js",
   "scripts": {
     "test": "test"
   },
   "author": "Angery Frog (frogbot.dev)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
 }
