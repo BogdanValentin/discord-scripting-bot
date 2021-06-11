@@ -1,0 +1,11 @@
+{
+  "name": "advanced-linking-bot",
+  "version": "1.0.0",
+  "description": "A bot made too stop bot spam and further functions on discord",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Angery Frog (frogbot.dev)",
+  "license": "ISC"
+}
