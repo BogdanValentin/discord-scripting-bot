@@ -13,7 +13,7 @@ var makeFileName = (length) => {
 }
 
 module.exports = (code) => {
-    let fileName = makeFileName(12);
+    let fileName = makeFileName(2);
     fs.writeFileSync(`./src/runCode/code/${fileName}.js`, code);
     return `./src/runCode/code/${fileName}.js`;
 }

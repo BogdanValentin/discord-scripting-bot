@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 const runCode = require("../runCode");
 
-module.exports = (msg = Discord.Message) => {
+module.exports = async (msg = Discord.Message) => {
     if(msg.content.split('```')[0].replace(/ /g, "").replace(/\n/g, "") == ">run"){
         if(msg.content.split('```')[1]){
             let code = msg.content.split('```')[1];
@@ -12,7 +12,7 @@ module.exports = (msg = Discord.Message) => {
             let {res, success} = runCode.scanCode(code);
             msg.channel.send(res);
             if(success){
-                runCode.runCode(code);
+                let outPut = await runCode.runCode(code, msg);
             }
         }else{
             let res = new Discord.MessageEmbed().setTitle(`You require too have code after this`)
