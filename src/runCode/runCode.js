@@ -10,7 +10,7 @@ module.exports = (code = new String(), msg = Discord.Message) => {
         let output = '';
         let active = true;
         let process = childProcess.exec(`node ${fileName}`, (err, stdout, stderr)=>{
-            if(stdout.length < 1500){
+            if(stdout.length < 1500 && stdout){
                 msg.channel.send(stdout);
             }
             if(stderr){
