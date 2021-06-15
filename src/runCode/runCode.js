@@ -9,22 +9,20 @@ module.exports = (code = new String(), msg = Discord.Message) => {
         let fileName = saveCode(code);
         let output = '';
         let active = true;
-        let process = childProcess.exec(`node ${fileName}`, (err, stdout, stderr)=>{
-            if(stdout.length < 1500 && stdout){
-                msg.channel.send(stdout);
-            }
-            if(stderr){
-                msg.channel.send("We have encountered an error in this code!");
+        let process = childProcess.exec(`node ${fileName}`);
+        process.on('exit', ()=>{active  = false});
+        process.stdout.on('data', (data)=>{
+            if(data.length < 1500 && active){
+                msg.channel.send(data.toString());
             };
         });
-        process.on('close', ()=>{active  = false});
-        process.on('exit', ()=>{active  = false});
         setTimeout(()=>{
             if(active){
                 msg.channel.send("Timed out...");
                 process.kill();
-            }
-            resolve()
-        }, 3000)
-    })
+                process = void 0;
+            };
+            resolve();
+        }, 3000);
+    });
 }
